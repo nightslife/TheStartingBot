@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 
-const clientBotId = '';
+const clientBotId = 'MzE1NzAzODM3MzMzNzgyNTI5.DAKo1g.h-tF69ExRFIzHnUwJcbnB9Lz-1I';
 const guildId = '107926187082285056';
 const applicationChannelId = '315720532794540052';
 const officerChannelId = '315720554353262593';
@@ -12,6 +12,7 @@ const applicationMessagedeleteTime = 3000;
 
 let officerForForwarding;
 let officerChannel;
+let officerRole;
 
 function pasteApplicationToOfficerChannel(message) {
   // Get the current user.
@@ -25,7 +26,7 @@ function pasteApplicationToOfficerChannel(message) {
   officerChannel.send({embed});
 
   // Notify the officers of the new message.
-  officerChannel.send(officerRoleId);
+  officerChannel.send(officerRole.toString());
 
   // DM the applicant and let them know their message was received.
   user.createDM().then((channel) => {
@@ -57,6 +58,7 @@ function relayDMsToOfficer(message) {
 
 client.on('ready', () => {
   console.log('I am ready!');
+  officerRole = Array.from(client.guilds.get(guildId).roles.filter(role => role.name == 'Officer'))[0][1];
   officerChannel = client.channels.get(officerChannelId);
   officerForForwarding = client.guilds.get(guildId).members.get(officerForForwardingId).user;
 });
