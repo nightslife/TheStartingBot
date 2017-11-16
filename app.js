@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 
-const clientBotId = 'MzE1NzAzODM3MzMzNzgyNTI5.DAKo1g.h-tF69ExRFIzHnUwJcbnB9Lz-1I';
+const clientBotId = '';
 const guildId = '107926187082285056';
 const applicationChannelId = '315720532794540052';
 const officerChannelId = '315720554353262593';
